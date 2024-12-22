@@ -31,12 +31,12 @@ def get_arrivals(network, stop_id, line_id):
     if len(data) > 0:
         for journey in data:
 
+            # Get the number of minutes away
+            # If 'ExpectedArrivalTime' does not exist, use 'AimedArrivalTime'
             try:
                 arrival = journey['MonitoredVehicleJourney']['MonitoredCall']['ExpectedArrivalTime']
             except KeyError:
                 arrival = journey['MonitoredVehicleJourney']['MonitoredCall']['AimedArrivalTime']
-            stops_away = journey['MonitoredVehicleJourney']['MonitoredCall']['Extensions']['Distances']['StopsFromCall']
-            distance = journey['MonitoredVehicleJourney']['MonitoredCall']['Extensions']['Distances']['PresentableDistance']
 
             arrival = datetime.fromisoformat(arrival).replace(tzinfo=None)
 
@@ -44,6 +44,8 @@ def get_arrivals(network, stop_id, line_id):
             time_difference = arrival - current_time
             eta_minutes = time_difference.total_seconds() / 60
 
+            # Get the distance away (This is unused for now. It can be presented in both miles or stops)
+            distance = journey['MonitoredVehicleJourney']['MonitoredCall']['Extensions']['Distances']['PresentableDistance']
             distance_list = distance.split(' ')
             distance_display = ''
             if len(distance_list) == 1:
@@ -59,6 +61,9 @@ def get_arrivals(network, stop_id, line_id):
                     distance_display += ' stp'
                 elif distance_list[-2] == 'miles' or distance_list[-2] == 'mile':
                     distance_display += 'mi'
+            
+            # Get number of stops away
+            stops_away = journey['MonitoredVehicleJourney']['MonitoredCall']['Extensions']['Distances']['StopsFromCall']
 
             try:
                 if stops_away <= 1:
