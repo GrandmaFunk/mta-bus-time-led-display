@@ -1,6 +1,6 @@
 # LED MTA Bus Time Display
 
-This project utilizes a [64 x 32 LED Matrix](https://www.adafruit.com/product/2278) and an [Adafruit Matrix Portal](https://www.adafruit.com/product/4745) to display real-time information on bus stops in New York City using the [MTA Bus Time API](https://bustime.mta.info/wiki/Developers/Index). We utilize [CircuitPython](https://circuitpython.org/) Version 9.x and it is recommended to use the [Mu Editor](https://codewith.mu/) for rapid deployment when code is modified. A [starter kit](https://www.adafruit.com/product/4812) is also available which includes a power supply and an acrylic diffusion panel.
+This project utilizes a [64 x 32 LED Matrix](https://www.adafruit.com/product/2278) and an [Adafruit Matrix Portal](https://www.adafruit.com/product/4745) to display real-time information on bus stops in New York City using the [MTA Bus Time API](https://bustime.mta.info/wiki/Developers/Index). This was coded in [CircuitPython](https://circuitpython.org/) Version 9.x and it is recommended to use the [Mu Editor](https://codewith.mu/) for rapid deployment when code is modified. A [starter kit](https://www.adafruit.com/product/4812) is also available which includes a power supply and an acrylic diffusion panel.
 
 ## Contents
 1. [Background](#background)
